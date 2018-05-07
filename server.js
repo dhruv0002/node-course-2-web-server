@@ -1,6 +1,14 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+
+const port = process.env.PORT || 3000;
+/*
+To access enviroment variable in your system we can type 'env' in linux, osx and 'SET' in windows. Here i am accessing the port
+in which i am deploying my application, so that it dosent cause my app any problem to get executed in heroku or any other platform
+and can dynamically update the port it has to listen to run seemlessly. 'process .env' stores all the enviroment variables as key
+value pairs. When we run this app locally the 'PORT' enviroment variable dose not exist so we are mentioning 3000 in our or condition.
+*/
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');//This is used to make use of templates of html which are used in every page.
@@ -74,6 +82,6 @@ app.get('/bad', (req, res) => {
     errorMessage: 'Unable to handle request'
   });
 });
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
