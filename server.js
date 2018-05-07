@@ -77,6 +77,13 @@ app.get('/about', (req, res) => {
   });//This function is from hbs(handlebars) package. It take object as a second parameter.
 });
 
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Project Page',
+    message: 'Portfolio page here.'
+  });
+});
+
 app.get('/bad', (req, res) => {
   res.send({
     errorMessage: 'Unable to handle request'
